@@ -21,16 +21,16 @@ interface FilterButtonProps {
  * @param {Function} onClick - Handler for when the filter is clicked
  * @returns {JSX.Element} A button for filtering calendar events
  */
-const FilterButton = ({ 
-  icon: Icon, 
-  label, 
-  isActive = false, 
-  onClick 
+const FilterButton = ({
+  icon: Icon,
+  label,
+  isActive = false,
+  onClick
 }: FilterButtonProps): JSX.Element => {
   return (
     <button
       className={cn(
-        "card-filter-item flex items-center gap-2 px-4 py-2 transition-colors",
+        "card-filter-item flex items-center gap-2 px-4 py-2 transition-colors rounded-lg",
         isActive ? "bg-white/30" : ""
       )}
       onClick={onClick}

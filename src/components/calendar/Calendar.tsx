@@ -1,4 +1,4 @@
-
+"use client";
 import React, { JSX, useState } from 'react';
 import GlassCard from '../GlassCard';
 import DayButton from './DayButton';
@@ -48,7 +48,7 @@ const Calendar = (): JSX.Element => {
   const [activeMonth, setActiveMonth] = useState('October, 2024');
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
-  
+
   // Handlers for our component interactions
   const handleDayClick = (date: string) => setActiveDay(date);
   const handleFilterClick = (filterId: string) => {
@@ -80,22 +80,22 @@ const Calendar = (): JSX.Element => {
     if (activeFilter && event.type !== activeFilter) return false;
     if (searchQuery) {
       return event.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-             event.location?.toLowerCase().includes(searchQuery.toLowerCase());
+        event.location?.toLowerCase().includes(searchQuery.toLowerCase());
     }
     return true;
   });
 
   return (
-    <GlassCard className="max-w-md mx-auto w-full">
+    <GlassCard className="max-w-md mx-auto w-full font-poppins">
       {/* Header */}
-      <header className="flex justify-between items-center mb-4">
+      <header className="flex justify-between items-center mb-4 font-poppins">
         <div className="flex items-center text-white">
           <CalendarIcon className="mr-2" size={22} />
-          <h2 className="text-xl font-semibold">Schedule</h2>
+          <h2 className="text-xl">Schedule</h2>
         </div>
-        <a href="#" className="text-white flex items-center">
+        <a href="#" className="text-white flex items-center font-poppins">
           See all
-          <ChevronRight size={16} className="ml-1" />
+          <ChevronRight size={16} className="ml-1 font-poppins" />
         </a>
       </header>
 
@@ -107,16 +107,16 @@ const Calendar = (): JSX.Element => {
       />
 
       {/* Days selector */}
-      <nav className="flex justify-between items-center my-4 relative">
-        <button 
-          className="absolute left-0 text-white p-1 bg-black/20 rounded-full z-10" 
+      <nav className="flex justify-between items-center my-4 relative font-poppins">
+        <button
+          className="absolute left-0 text-white p-1 bg-black/20 rounded-full font-poppins z-10"
           onClick={handlePrevDay}
           aria-label="Previous day"
         >
           <ChevronLeft size={18} />
         </button>
-        
-        <div className="flex overflow-x-auto space-x-2 py-2 w-full scrollbar-hide px-6">
+
+        <div className="flex  font-poppins overflow-x-auto space-x-2 py-2 w-full scrollbar-hide px-6">
           {DAYS.map((day) => (
             <DayButton
               key={day.date}
@@ -127,9 +127,9 @@ const Calendar = (): JSX.Element => {
             />
           ))}
         </div>
-        
-        <button 
-          className="absolute right-0 text-white p-1 bg-black/20 rounded-full z-10" 
+
+        <button
+          className="absolute right-0 text-white p-1 bg-black/20 rounded-full z-10 font-poppins"
           onClick={handleNextDay}
           aria-label="Next day"
         >
@@ -138,26 +138,26 @@ const Calendar = (): JSX.Element => {
       </nav>
 
       {/* Search */}
-      <SearchBar 
+      <SearchBar
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
       />
 
       {/* Filters */}
-      <div className="flex justify-between gap-2 mt-4 mb-6">
-        <FilterButton 
+      <div className="flex justify-between gap-2 mt-4 mb-6 font-poppins">
+        <FilterButton
           icon={CalendarIcon}
           label="Meetings"
           isActive={activeFilter === 'meetings'}
           onClick={() => handleFilterClick('meetings')}
         />
-        <FilterButton 
+        <FilterButton
           icon={CalendarIcon}
           label="Events"
           isActive={activeFilter === 'events'}
           onClick={() => handleFilterClick('events')}
         />
-        <FilterButton 
+        <FilterButton
           icon={CalendarIcon}
           label="Holiday"
           isActive={activeFilter === 'holiday'}
@@ -166,7 +166,7 @@ const Calendar = (): JSX.Element => {
       </div>
 
       {/* Events */}
-      <div className="space-y-3">
+      <div className="space-y-3 font-poppins">
         {filteredEvents.map((event) => (
           <EventCard
             key={event.id}
@@ -177,9 +177,9 @@ const Calendar = (): JSX.Element => {
             tags={event.tags}
           />
         ))}
-        
+
         {filteredEvents.length === 0 && (
-          <p className="text-white text-center py-4">No events found.</p>
+          <p className="text-white text-center py-4 font-poppins ">No events found.</p>
         )}
       </div>
     </GlassCard>
